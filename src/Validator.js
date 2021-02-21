@@ -1,39 +1,25 @@
+import StringSchema from './schemas/StringSchema';
+import NumberSchema from './schemas/NumberSchema';
+import ArraySchema from './schemas/ArraySchema';
+import ObjectSchema from './schemas/ObjectSchema';
+
 export default class Validator {
-  schemaContains = '';
-
-  constructor() {}
-
   string() {
-    this.schemaType = 'string';
-
-    return this;
+    return new StringSchema();
   }
 
-  contains(item) {
-    this.schemaContains = item;
-
-    return this;
+  number() {
+    return new NumberSchema();
   }
 
-  required() {
-    this.schemaRequired = true;
-
-    return this;
+  array() {
+    return new ArraySchema();
   }
 
-  isValid(item) {
-    let isValid = true;
-
-    if (this.schemaType !== typeof item) {
-      return false;
-    }
-    if (!item.includes(this.schemaContains)) {
-      return false;
-    }
-    if (this.schemaRequired && !item) {
-      return false;
-    }
-
-    return isValid;
+  object() {
+    return new ObjectSchema();
   }
 }
+
+const a = new Validator();
+console.log(a.number().isValid(null));
