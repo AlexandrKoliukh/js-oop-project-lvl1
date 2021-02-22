@@ -20,6 +20,3 @@ export default class Validator {
     return new ObjectSchema();
   }
 }
-
-const a = new Validator();
-console.log(a.number().isValid(null));

@@ -6,6 +6,7 @@ const checkers = {
     return _.isNumber(value);
   },
   positive(value) {
+    if (value === null) return true;
     return value > 0;
   },
   range(value, min, max) {
