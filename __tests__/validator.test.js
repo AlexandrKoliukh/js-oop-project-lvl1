@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { test, expect } from '@jest/globals';
 import Validator from '../src/Validator';
 
