@@ -1,9 +1,4 @@
-install: install-deps
-
-run:
-	bin/nodejs-package.js 10
-
-install-deps:
+setup:
 	npm ci
 
 test:
@@ -16,7 +11,7 @@ test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
 lint:
-	npx eslint .
+	npx eslint --fix .
 
 publish:
 	npm publish

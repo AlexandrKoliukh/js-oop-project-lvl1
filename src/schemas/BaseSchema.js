@@ -1,17 +1,24 @@
-export class BaseSchema {
-  constructor() {
-    this.validators = [];
+export default class BaseSchema {
+  constructor(validators) {
+    this.validators = validators;
+    this.appliedValidators = [];
   }
 
   isValid(item) {
-    for (const [validateFunc, data] of this.validators) {
-      if (!validateFunc(item, ...data)) return false;
+    for (const { validate, data } of this.appliedValidators) {
+      if (!validate(item, ...data)) return false;
     }
 
     return true;
   }
 
-  addValidator(validateFunc, ...data) {
-    this.validators = [[validateFunc, data]].concat(this.validators);
+  applyValidator(validatorName, ...data) {
+    const validate = this.validators[validatorName];
+    this.appliedValidators.push({ validate, data });
+  }
+
+  test(validatorName, ...data) {
+    this.applyValidator(validatorName, ...data);
+    return this;
   }
 }

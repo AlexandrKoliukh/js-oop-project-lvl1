@@ -1,27 +1,18 @@
-import { BaseSchema } from './BaseSchema';
-
-const checkers = {
-  required(value) {
-    return Array.isArray(value);
-  },
-  sizeof(value, length) {
-    return value.length === length;
-  },
-};
+import BaseSchema from './BaseSchema';
 
 export default class ArraySchema extends BaseSchema {
-  constructor() {
-    super();
-    this.addValidator(checkers.required);
+  constructor(...props) {
+    super(...props);
+    this.applyValidator('array');
   }
 
   required() {
-    // this.addValidator();
+    this.applyValidator('required');
     return this;
   }
 
   sizeof(length) {
-    this.addValidator(checkers.sizeof, length);
+    this.applyValidator('sizeof', length);
     return this;
   }
 }

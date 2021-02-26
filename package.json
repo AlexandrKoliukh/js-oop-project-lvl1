@@ -2,30 +2,18 @@
   "name": "@hexlet/code",
   "version": "0.0.3",
   "description": "Data validator",
-  "bin": {
-    "hexlet": "bin/nodejs-package.js"
-  },
+  "main": "index.js",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
     "test": "npx jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hexlet-boilerplates/nodejs-package.git"
-  },
-  "author": "Kirill Mokevnin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hexlet-boilerplates/nodejs-package/issues"
-  },
   "type": "module",
   "jest": {
     "testEnvironment": "node",
     "transform": {}
   },
-  "homepage": "https://github.com/hexlet-boilerplates/nodejs-package#readme",
   "dependencies": {
     "debug": "^4.3.1",
     "lodash": "^4.17.20"
