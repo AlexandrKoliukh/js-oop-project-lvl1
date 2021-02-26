@@ -44,6 +44,7 @@ export const array = {
 
 export const object = {
   shape(obj, shape) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, validator] of _.entries(shape)) {
       const value = obj[key];
       if (!validator.isValid(value)) {

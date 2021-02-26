@@ -5,6 +5,7 @@ export default class BaseSchema {
   }
 
   isValid(item) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const { validate, data } of this.appliedValidators) {
       if (!validate(item, ...data)) return false;
     }
