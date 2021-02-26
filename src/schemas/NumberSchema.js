@@ -1,11 +1,6 @@
 import BaseSchema from './BaseSchema';
 
 export default class NumberSchema extends BaseSchema {
-  constructor(...props) {
-    super(...props);
-    this.applyValidator('number');
-  }
-
   required() {
     this.applyValidator('required');
     return this;

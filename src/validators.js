@@ -1,11 +1,8 @@
 import _ from 'lodash';
 
 export const string = {
-  string(value) {
-    return _.isString(value) || _.isNil(value);
-  },
   required(value) {
-    return value !== '' && !_.isNil(value);
+    return _.isString(value) && !_.isEmpty(value) && !_.isNil(value);
   },
   minLength(value, length) {
     return value.length >= length;
@@ -16,11 +13,8 @@ export const string = {
 };
 
 export const number = {
-  number(value) {
-    return _.isNumber(value) || _.isNil(value);
-  },
   required(value) {
-    return !_.isNil(value);
+    return _.isNumber(value) && !_.isNil(value);
   },
   positive(value) {
     return value > 0 || _.isNil(value);
