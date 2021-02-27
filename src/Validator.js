@@ -73,6 +73,7 @@ export default class Validator {
 
   addValidator(schema, validatorName, validateFn) {
     const targetSchema = this.validatorsPerSchema[schema];
+    /* eslint-disable comma-dangle */
     if (!targetSchema) {
       throw new Error(
         `Unsupported schema: ${schema}. Available schemas: ${JSON.stringify(
@@ -80,6 +81,7 @@ export default class Validator {
         )}`
       );
     }
+    /* eslint-enable comma-dangle */
 
     targetSchema[validatorName] = validateFn;
   }
