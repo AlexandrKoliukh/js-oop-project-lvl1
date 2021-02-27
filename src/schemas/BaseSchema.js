@@ -15,6 +15,10 @@ export default class BaseSchema {
 
   applyValidator(validatorName, ...data) {
     const validate = this.validators[validatorName];
+    if (!validate) {
+      throw new Error(`Unknown validator name: ${validatorName}`);
+    }
+
     this.appliedValidators.push({ validate, data });
   }
 

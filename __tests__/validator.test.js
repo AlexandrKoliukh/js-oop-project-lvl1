@@ -80,18 +80,7 @@ test('Object', () => {
 });
 
 describe('Custom', () => {
-  test('base', () => {
-    const v = new Validator();
-    const fn = (value, start) => value.startsWith(start);
-    v.addValidator('string', 'startWith', fn);
-
-    const schema = v.string().test('startWith', 'H');
-
-    expect(schema.isValid('Hexlet')).toBe(true);
-    expect(schema.isValid('exlet')).toBe(false);
-  });
-
-  test('multi args', () => {
+  test('test', () => {
     const v = new Validator();
     const fn = (value, start, end) =>
       value.length > start && value.length < end;
@@ -104,12 +93,23 @@ describe('Custom', () => {
     expect(schema.isValid('Hexlet123')).toBe(false);
   });
 
-  test('error', () => {
+  test('immutable global', () => {
+    const v = new Validator();
+    const fn = (value, start) => value.startsWith(start);
+    v.addValidator('string', 'startWith', fn);
+
+    const v2 = new Validator();
+    expect(() => {
+      v2.string().test('startWith', 'H');
+    }).toThrow('Unknown validator name: startWith');
+  });
+
+  test('unsupported schema', () => {
     const v = new Validator();
     const fn = (value) => value === false;
 
     expect(() => {
       v.addValidator('boolean', 'isFalse', fn);
-    }).toThrow();
+    }).toThrow('Unsupported schema: boolean. Available schemas:');
   });
 });
